@@ -1,0 +1,240 @@
+{
+    "name": "allenai/dqa-net",
+    "url": "https://github.com/aqui-tna/dqa-net",
+    "python_version": "3.5.1",
+    "requirements": {
+      "req_file": "requirements.txt",
+      "pip": [
+        "tensorflow"
+      ],
+      "others": [
+      ]
+    },
+    "to_run": {
+        "decision": false,
+        "reason": "Cannot download dataset: Forbiden link to amazon s3"
+    },
+    "entries": [
+        {
+          "cmd": "chmod +x download.sh \n ./download.sh",
+          "main": "download.sh",
+          "steps": [
+              "download-data-and-models"
+          ],
+          "args_lib": "",
+          "args": [],
+          "ins": [],
+          "outs": [
+              {
+                  "type": "dir",
+                  "location": "./data",
+                  "artifact": "dataset",
+                  "ex_in_repo": false
+              },
+              {
+                "type": "dir",
+                "location": "./models",
+                "artifact": "model",
+                "ex_in_repo": true
+             }
+          ]
+        },
+        {
+            "cmd": "python -m prepro.p05",
+            "main": "prepro/p05.py",
+            "steps": [
+                "data-preprocessing"
+            ],
+            "args_lib": "argparse",
+            "args": [
+                {
+                    "names": [
+                        "--data_dir"
+                    ],
+                    "input": true,
+                    "dest": "data_dir",
+                    "ex_has_default": true,
+                    "default": "/home/anglil/data/dqa/shining3",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--target_dir"
+                    ],
+                    "input": true,
+                    "dest": "target_dir",
+                    "ex_has_default": true,
+                    "default": "data/s3",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--glove_path"
+                    ],
+                    "input": true,
+                    "dest": "glove_path",
+                    "ex_has_default": true,
+                    "default": "/home/anglil/models/glove/glove.6B.300d.txt",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--min_count"
+                    ],
+                    "input": true,
+                    "dest": "min_count",
+                    "ex_has_default": true,
+                    "default": 5,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--vgg_model_path"
+                    ],
+                    "input": true,
+                    "dest": "vgg_model_path",
+                    "ex_has_default": true,
+                    "default": "~/models/vgg/vgg-19.caffemodel",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--vgg_proto_path"
+                    ],
+                    "input": true,
+                    "dest": "vgg_proto_path",
+                    "ex_has_default": true,
+                    "default": "~/models/vgg/vgg-19.prototxt",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--debug"
+                    ],
+                    "input": true,
+                    "dest": "debug",
+                    "ex_has_default": true,
+                    "default": "False",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--qa2hypo"
+                    ],
+                    "input": true,
+                    "dest": "qa2hypo",
+                    "ex_has_default": true,
+                    "default": "True",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--qa2hypo_path"
+                    ],
+                    "input": true,
+                    "dest": "qa2hypo_path",
+                    "ex_has_default": true,
+                    "default": "../dqa/qa2hypo",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--prepro_images"
+                    ],
+                    "input": true,
+                    "dest": "prepro_images",
+                    "ex_has_default": true,
+                    "default": "True",
+                    "type": "str",
+                    "mandatory": false
+                }
+            ],
+            "ins": [
+                {
+                "type": "dir or file",
+                "location": "path to the location of the file or folder",
+                "artifact": "artifact type of the element: dataset,conf,metrics",
+                "ex_in_repo": true
+                }
+            ],
+            "outs": [
+                {
+                    "type": "dir or file",
+                    "location": "path to the location of the file or folder",
+                    "artifact": "artifact type of the element: dataset,conf,metrics",
+                    "ex_in_repo": true
+                }
+            ]
+        },
+        {
+            "cmd": "python -m main.x05 --train",
+            "main": "main/x05.py",
+            "steps": [
+                "trainning"
+            ],
+            "args_lib": "tenforflow.app.flags",
+            "args": [],
+            "ins": [
+                {
+                "type": "dir or file",
+                "location": "path to the location of the file or folder",
+                "artifact": "artifact type of the element: dataset,conf,metrics",
+                "ex_in_repo": true
+                }
+            ],
+            "outs": [
+                {
+                    "type": "dir or file",
+                    "location": "path to the location of the file or folder",
+                    "artifact": "artifact type of the element: dataset,conf,metrics",
+                    "ex_in_repo": true
+                }
+            ]
+        }
+      ],
+    "ex_metrics": {
+      "metrics_files": [
+          {
+              "file_name": "filename of the file where metrics are stored",
+              "metrics": ["List of metrics stored in that file"]
+          }
+      ],
+      "prints": ["list of metrics that are printed to stdout"],
+      "plots": ["list of metrics that are plotted"],
+      "others": [
+          {
+              "name": "method name",
+              "in_repo": "true if the file is in the repo, false if not",
+              "metrics": "List of metrics saved using this method"
+          }
+      ]
+    },
+    "ex_hyperparams": {
+      "from_cmd": ["List of metrics read from cmd line"],
+      "config_files": [
+          {
+              "name": "filename of the file where the hyperparameters are stored",
+              "in_repo": "true if the file is in the repo, false if not",
+              "hyperparams": ["List of hyperparams stored in that file"]
+          }
+      ],
+      "in_code": [
+        "MAX_LABEL_SIZE"
+      ],
+      "others": [
+          {
+              "name": "method name",
+              "metrics": ["List of metrics saved using this method"]
+          }
+      ]
+    }
+  }
