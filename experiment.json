@@ -29,12 +29,14 @@
                   "type": "dir",
                   "location": "./data",
                   "artifact": "dataset",
+                  "ex_from": "cmd",
                   "ex_in_repo": false
               },
               {
                 "type": "dir",
                 "location": "./models",
                 "artifact": "model",
+                "ex_from": "cmd",
                 "ex_in_repo": true
              }
           ]
@@ -163,12 +165,14 @@
                 "type": "dir",
                 "location": "data",
                 "artifact": "dataset",
+                "ex_from": "cmd",
                 "ex_in_repo": false
                 },
                 {
                     "type": "file",
                     "location": "models/glove/glove.6B.300d.txt",
                     "artifact": "dataset",
+                    "ex_from": "cmd",
                     "ex_in_repo": false
                 }
             ],
@@ -177,6 +181,7 @@
                     "type": "dir",
                     "location": "models/vgg",
                     "artifact": "model",
+                    "ex_from": "cmd",
                     "ex_in_repo": false
                 }
             ]
@@ -194,6 +199,7 @@
                 "type": "dir",
                 "location": "data/s3",
                 "artifact": "data",
+                "ex_from": "cmd",
                 "ex_in_repo": false
                 }
             ],
@@ -202,18 +208,21 @@
                     "type": "dir",
                     "location": "evals",
                     "artifact": "metrics",
+                    "ex_from": "manual",
                     "ex_in_repo": false
                 },
                 {
                     "type": "dir",
                     "location": "logs",
                     "artifact": "logs",
+                    "ex_from": "manual",
                     "ex_in_repo": false
                 },
                 {
                     "type": "dir",
                     "location": "saves",
                     "artifact": "model",
+                    "ex_from": "manual",
                     "ex_in_repo": false
                 }
             ]
@@ -231,6 +240,7 @@
                 "type": "dir",
                 "location": "data/s3",
                 "artifact": "data",
+                "ex_from": "cmd",
                 "ex_in_repo": false
                 }
             ],
@@ -239,18 +249,21 @@
                     "type": "dir",
                     "location": "evals",
                     "artifact": "metrics",
+                    "ex_from": "manual",
                     "ex_in_repo": false
                 },
                 {
                     "type": "dir",
                     "location": "logs",
                     "artifact": "logs",
+                    "ex_from": "manual",
                     "ex_in_repo": false
                 },
                 {
                     "type": "dir",
                     "location": "saves",
                     "artifact": "model",
+                    "ex_from": "manual",
                     "ex_in_repo": false
                 }
             ]
