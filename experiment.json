@@ -160,18 +160,24 @@
             ],
             "ins": [
                 {
-                "type": "dir or file",
-                "location": "path to the location of the file or folder",
-                "artifact": "artifact type of the element: dataset,conf,metrics",
-                "ex_in_repo": true
+                "type": "dir",
+                "location": "data",
+                "artifact": "dataset",
+                "ex_in_repo": false
+                },
+                {
+                    "type": "file",
+                    "location": "models/glove/glove.6B.300d.txt",
+                    "artifact": "dataset",
+                    "ex_in_repo": false
                 }
             ],
             "outs": [
                 {
-                    "type": "dir or file",
-                    "location": "path to the location of the file or folder",
-                    "artifact": "artifact type of the element: dataset,conf,metrics",
-                    "ex_in_repo": true
+                    "type": "dir",
+                    "location": "models/vgg",
+                    "artifact": "model",
+                    "ex_in_repo": false
                 }
             ]
         },
@@ -182,59 +188,86 @@
                 "trainning"
             ],
             "args_lib": "tenforflow.app.flags",
-            "args": [],
+            "args": ["unknown"],
             "ins": [
                 {
-                "type": "dir or file",
-                "location": "path to the location of the file or folder",
-                "artifact": "artifact type of the element: dataset,conf,metrics",
-                "ex_in_repo": true
+                "type": "dir",
+                "location": "data/s3",
+                "artifact": "data",
+                "ex_in_repo": false
                 }
             ],
             "outs": [
                 {
-                    "type": "dir or file",
-                    "location": "path to the location of the file or folder",
-                    "artifact": "artifact type of the element: dataset,conf,metrics",
-                    "ex_in_repo": true
+                    "type": "dir",
+                    "location": "evals",
+                    "artifact": "metrics",
+                    "ex_in_repo": false
+                },
+                {
+                    "type": "dir",
+                    "location": "logs",
+                    "artifact": "logs",
+                    "ex_in_repo": false
+                },
+                {
+                    "type": "dir",
+                    "location": "saves",
+                    "artifact": "model",
+                    "ex_in_repo": false
+                }
+            ]
+        },
+        {
+            "cmd": "python -m main.x05",
+            "main": "main/x05.py",
+            "steps": [
+                "testing"
+            ],
+            "args_lib": "tenforflow.app.flags",
+            "args": ["unknown"],
+            "ins": [
+                {
+                "type": "dir",
+                "location": "data/s3",
+                "artifact": "data",
+                "ex_in_repo": false
+                }
+            ],
+            "outs": [
+                {
+                    "type": "dir",
+                    "location": "evals",
+                    "artifact": "metrics",
+                    "ex_in_repo": false
+                },
+                {
+                    "type": "dir",
+                    "location": "logs",
+                    "artifact": "logs",
+                    "ex_in_repo": false
+                },
+                {
+                    "type": "dir",
+                    "location": "saves",
+                    "artifact": "model",
+                    "ex_in_repo": false
                 }
             ]
         }
       ],
     "ex_metrics": {
-      "metrics_files": [
-          {
-              "file_name": "filename of the file where metrics are stored",
-              "metrics": ["List of metrics stored in that file"]
-          }
-      ],
-      "prints": ["list of metrics that are printed to stdout"],
-      "plots": ["list of metrics that are plotted"],
-      "others": [
-          {
-              "name": "method name",
-              "in_repo": "true if the file is in the repo, false if not",
-              "metrics": "List of metrics saved using this method"
-          }
-      ]
+      "metrics_files": ["unknown"],
+      "prints": ["unknown"],
+      "plots": ["unknown"],
+      "others": []
     },
     "ex_hyperparams": {
-      "from_cmd": ["List of metrics read from cmd line"],
-      "config_files": [
-          {
-              "name": "filename of the file where the hyperparameters are stored",
-              "in_repo": "true if the file is in the repo, false if not",
-              "hyperparams": ["List of hyperparams stored in that file"]
-          }
-      ],
+      "from_cmd": ["unknown"],
+      "config_files": ["unknwon"],
       "in_code": [
         "MAX_LABEL_SIZE"
       ],
-      "others": [
-          {
-              "name": "method name",
-              "metrics": ["List of metrics saved using this method"]
-          }
-      ]
+      "others": []
     }
   }
