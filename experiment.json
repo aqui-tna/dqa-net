@@ -8,6 +8,7 @@
         "tensorflow"
       ],
       "others": [
+          "chmod"
       ]
     },
     "to_run": {
@@ -193,7 +194,404 @@
                 "trainning"
             ],
             "args_lib": "tenforflow.app.flags",
-            "args": ["unknown"],
+            "args": [
+                {
+                    "names": [
+                        "--model_name"
+                    ],
+                    "input": true,
+                    "dest": "model_name",
+                    "ex_has_default": false,
+                    "default": "m05",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--data_dir"
+                    ],
+                    "input": true,
+                    "dest": "data_dir",
+                    "ex_has_default": false,
+                    "default": "data/s3",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--fold_path"
+                    ],
+                    "input": true,
+                    "dest": "fold_path",
+                    "ex_has_default": false,
+                    "default": "data/s3/folds/fold23.json",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--batch_size"
+                    ],
+                    "input": true,
+                    "dest": "batch_size",
+                    "ex_has_default": false,
+                    "default": 100,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--init_mean"
+                    ],
+                    "input": true,
+                    "dest": "init_mean",
+                    "ex_has_default": false,
+                    "default": 0,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--init_std"
+                    ],
+                    "input": true,
+                    "dest": "init_std",
+                    "ex_has_default": false,
+                    "default": 0.1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--init_lr"
+                    ],
+                    "input": true,
+                    "dest": "init_lr",
+                    "ex_has_default": false,
+                    "default": 0.1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--anneal_period"
+                    ],
+                    "input": true,
+                    "dest": "anneal_period",
+                    "ex_has_default": false,
+                    "default": 20,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--anneal_ratio"
+                    ],
+                    "input": true,
+                    "dest": "anneal_ratio",
+                    "ex_has_default": false,
+                    "default": 0.5,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--num_epochs"
+                    ],
+                    "input": true,
+                    "dest": "num_epochs",
+                    "ex_has_default": false,
+                    "default": 200,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--opt"
+                    ],
+                    "input": true,
+                    "dest": "opt",
+                    "ex_has_default": false,
+                    "default": "basic",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--train"
+                    ],
+                    "input": false,
+                    "dest": "train",
+                    "ex_has_default": false,
+                    "default": "False",
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--val_num_batches"
+                    ],
+                    "input": true,
+                    "dest": "val_num_batches",
+                    "ex_has_default": false,
+                    "default": -1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--train_num_batches"
+                    ],
+                    "input": true,
+                    "dest": "train_num_batches",
+                    "ex_has_default": false,
+                    "default": -1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--test_num_batches"
+                    ],
+                    "input": true,
+                    "dest": "test_num_batches",
+                    "ex_has_default": false,
+                    "default": -1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--load"
+                    ],
+                    "input": false,
+                    "dest": "load",
+                    "ex_has_default": false,
+                    "default": "False",
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--progress"
+                    ],
+                    "input": false,
+                    "dest": "progress",
+                    "ex_has_default": false,
+                    "default": "True",
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--device_type"
+                    ],
+                    "input": true,
+                    "dest": "device_type",
+                    "ex_has_default": false,
+                    "default": "cpu",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--num_devices"
+                    ],
+                    "input": true,
+                    "dest": "num_devices",
+                    "ex_has_default": false,
+                    "default": 1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--val_period"
+                    ],
+                    "input": true,
+                    "dest": "val_period",
+                    "ex_has_default": false,
+                    "default": 5,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--save_period"
+                    ],
+                    "input": true,
+                    "dest": "save_period",
+                    "ex_has_default": false,
+                    "default": 10,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--config"
+                    ],
+                    "input": true,
+                    "dest": "config",
+                    "ex_has_default": false,
+                    "default": "None",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--config_ext"
+                    ],
+                    "input": true,
+                    "dest": "config_ext",
+                    "ex_has_default": false,
+                    "default": ".json",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--draft"
+                    ],
+                    "input": false,
+                    "dest": "draft",
+                    "ex_has_default": false,
+                    "default": "False",
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--hidden_size"
+                    ],
+                    "input": true,
+                    "dest": "hidden_size",
+                    "ex_has_default": false,
+                    "default": 50,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--image_size"
+                    ],
+                    "input": true,
+                    "dest": "image_size",
+                    "ex_has_default": false,
+                    "default": 4096,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--rnn_num_layers"
+                    ],
+                    "input": true,
+                    "dest": "rnn_num_layers",
+                    "ex_has_default": false,
+                    "default": 1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--emb_num_layers"
+                    ],
+                    "input": true,
+                    "dest": "emb_num_layers",
+                    "ex_has_default": false,
+                    "default": 0,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--keep_prob"
+                    ],
+                    "input": true,
+                    "dest": "keep_prob",
+                    "ex_has_default": false,
+                    "default": 1.0,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--sim_func"
+                    ],
+                    "input": true,
+                    "dest": "sim_func",
+                    "ex_has_default": false,
+                    "default": "dot",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--lstm"
+                    ],
+                    "input": true,
+                    "dest": "lstm",
+                    "ex_has_default": false,
+                    "default": "basic",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--forget_bias"
+                    ],
+                    "input": true,
+                    "dest": "forget_bias",
+                    "ex_has_default": false,
+                    "default": 2.5,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--cell_clip"
+                    ],
+                    "input": true,
+                    "dest": "cell_clip",
+                    "ex_has_default": false,
+                    "default": 40,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--rand_y"
+                    ],
+                    "input": true,
+                    "dest": "rand_y",
+                    "ex_has_default": false,
+                    "default": 1.0,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--mode"
+                    ],
+                    "input": true,
+                    "dest": "mode",
+                    "ex_has_default": false,
+                    "default": "dqanet",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--encoder"
+                    ],
+                    "input": true,
+                    "dest": "encoder",
+                    "ex_has_default": false,
+                    "default": "lstm",
+                    "type": "str",
+                    "mandatory": false
+                }
+            ],
             "ins": [
                 {
                 "type": "dir",
@@ -234,7 +632,404 @@
                 "testing"
             ],
             "args_lib": "tenforflow.app.flags",
-            "args": ["unknown"],
+            "args": [
+                {
+                    "names": [
+                        "--model_name"
+                    ],
+                    "input": true,
+                    "dest": "model_name",
+                    "ex_has_default": false,
+                    "default": "m05",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--data_dir"
+                    ],
+                    "input": true,
+                    "dest": "data_dir",
+                    "ex_has_default": false,
+                    "default": "data/s3",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--fold_path"
+                    ],
+                    "input": true,
+                    "dest": "fold_path",
+                    "ex_has_default": false,
+                    "default": "data/s3/folds/fold23.json",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--batch_size"
+                    ],
+                    "input": true,
+                    "dest": "batch_size",
+                    "ex_has_default": false,
+                    "default": 100,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--init_mean"
+                    ],
+                    "input": true,
+                    "dest": "init_mean",
+                    "ex_has_default": false,
+                    "default": 0,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--init_std"
+                    ],
+                    "input": true,
+                    "dest": "init_std",
+                    "ex_has_default": false,
+                    "default": 0.1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--init_lr"
+                    ],
+                    "input": true,
+                    "dest": "init_lr",
+                    "ex_has_default": false,
+                    "default": 0.1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--anneal_period"
+                    ],
+                    "input": true,
+                    "dest": "anneal_period",
+                    "ex_has_default": false,
+                    "default": 20,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--anneal_ratio"
+                    ],
+                    "input": true,
+                    "dest": "anneal_ratio",
+                    "ex_has_default": false,
+                    "default": 0.5,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--num_epochs"
+                    ],
+                    "input": true,
+                    "dest": "num_epochs",
+                    "ex_has_default": false,
+                    "default": 200,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--opt"
+                    ],
+                    "input": true,
+                    "dest": "opt",
+                    "ex_has_default": false,
+                    "default": "basic",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--train"
+                    ],
+                    "input": false,
+                    "dest": "train",
+                    "ex_has_default": false,
+                    "default": "False",
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--val_num_batches"
+                    ],
+                    "input": true,
+                    "dest": "val_num_batches",
+                    "ex_has_default": false,
+                    "default": -1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--train_num_batches"
+                    ],
+                    "input": true,
+                    "dest": "train_num_batches",
+                    "ex_has_default": false,
+                    "default": -1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--test_num_batches"
+                    ],
+                    "input": true,
+                    "dest": "test_num_batches",
+                    "ex_has_default": false,
+                    "default": -1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--load"
+                    ],
+                    "input": false,
+                    "dest": "load",
+                    "ex_has_default": false,
+                    "default": "False",
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--progress"
+                    ],
+                    "input": false,
+                    "dest": "progress",
+                    "ex_has_default": false,
+                    "default": "True",
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--device_type"
+                    ],
+                    "input": true,
+                    "dest": "device_type",
+                    "ex_has_default": false,
+                    "default": "cpu",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--num_devices"
+                    ],
+                    "input": true,
+                    "dest": "num_devices",
+                    "ex_has_default": false,
+                    "default": 1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--val_period"
+                    ],
+                    "input": true,
+                    "dest": "val_period",
+                    "ex_has_default": false,
+                    "default": 5,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--save_period"
+                    ],
+                    "input": true,
+                    "dest": "save_period",
+                    "ex_has_default": false,
+                    "default": 10,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--config"
+                    ],
+                    "input": true,
+                    "dest": "config",
+                    "ex_has_default": false,
+                    "default": "None",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--config_ext"
+                    ],
+                    "input": true,
+                    "dest": "config_ext",
+                    "ex_has_default": false,
+                    "default": ".json",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--draft"
+                    ],
+                    "input": false,
+                    "dest": "draft",
+                    "ex_has_default": false,
+                    "default": "False",
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--hidden_size"
+                    ],
+                    "input": true,
+                    "dest": "hidden_size",
+                    "ex_has_default": false,
+                    "default": 50,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--image_size"
+                    ],
+                    "input": true,
+                    "dest": "image_size",
+                    "ex_has_default": false,
+                    "default": 4096,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--rnn_num_layers"
+                    ],
+                    "input": true,
+                    "dest": "rnn_num_layers",
+                    "ex_has_default": false,
+                    "default": 1,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--emb_num_layers"
+                    ],
+                    "input": true,
+                    "dest": "emb_num_layers",
+                    "ex_has_default": false,
+                    "default": 0,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--keep_prob"
+                    ],
+                    "input": true,
+                    "dest": "keep_prob",
+                    "ex_has_default": false,
+                    "default": 1.0,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--sim_func"
+                    ],
+                    "input": true,
+                    "dest": "sim_func",
+                    "ex_has_default": false,
+                    "default": "dot",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--lstm"
+                    ],
+                    "input": true,
+                    "dest": "lstm",
+                    "ex_has_default": false,
+                    "default": "basic",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--forget_bias"
+                    ],
+                    "input": true,
+                    "dest": "forget_bias",
+                    "ex_has_default": false,
+                    "default": 2.5,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--cell_clip"
+                    ],
+                    "input": true,
+                    "dest": "cell_clip",
+                    "ex_has_default": false,
+                    "default": 40,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--rand_y"
+                    ],
+                    "input": true,
+                    "dest": "rand_y",
+                    "ex_has_default": false,
+                    "default": 1.0,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--mode"
+                    ],
+                    "input": true,
+                    "dest": "mode",
+                    "ex_has_default": false,
+                    "default": "dqanet",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "--encoder"
+                    ],
+                    "input": true,
+                    "dest": "encoder",
+                    "ex_has_default": false,
+                    "default": "lstm",
+                    "type": "str",
+                    "mandatory": false
+                }
+            ],
             "ins": [
                 {
                 "type": "dir",
@@ -242,7 +1037,14 @@
                 "artifact": "data",
                 "ex_from": "cmd",
                 "ex_in_repo": false
-                }
+                },
+                {
+                    "type": "dir",
+                    "location": "configs",
+                    "artifact": "conf",
+                    "ex_from": "manual",
+                    "ex_in_repo": true
+                    }
             ],
             "outs": [
                 {
@@ -270,14 +1072,35 @@
         }
       ],
     "ex_metrics": {
-      "metrics_files": ["unknown"],
-      "prints": ["unknown"],
-      "plots": ["unknown"],
+      "metrics_files": [],
+      "prints": [],
+      "plots": [],
       "others": []
     },
     "ex_hyperparams": {
-      "from_cmd": ["unknown"],
-      "config_files": ["unknwon"],
+      "from_cmd": [
+        "batch_size",
+        "init_mean",
+        "init_std",
+        "init_lr",
+        "anneal_period",
+        "anneal_ratio",
+        "num_epochs",
+        "opt",
+        "train_num_batches",
+        "progress",
+        "hidden_size",
+        "rnn_num_layers",
+        "emb_num_layers",
+        "min_count",
+        "num_batches"],
+      "config_files": [
+        {
+            "name": "data/s3/meta_data.json",
+            "in_repo": false,
+            "hyperparams": ["max_sent_size", "max_fact_size", "max_num_facts", "num_choices", "vocab_size", "word_size"]
+        }
+      ],
       "in_code": [
         "MAX_LABEL_SIZE"
       ],
