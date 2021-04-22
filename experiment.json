@@ -24,7 +24,43 @@
           ],
           "args_lib": "",
           "args": [],
-          "ins": [],
+          "ins": [
+            {
+                "type": "link",
+                "location": "https://s3-us-west-2.amazonaws.com/dqa-data/shining3.zip",
+                "artifact": "dataset",
+                "ex_from": "manual",
+                "ex_in_repo": false
+            },
+            {
+                "type": "link",
+                "location": "http://nlp.stanford.edu/data/glove.6B.zip",
+                "artifact": "dataset",
+                "ex_from": "manual",
+                "ex_in_repo": false
+            },
+            {
+                "type": "link",
+                "location": "http://www.robots.ox.ac.uk/~vgg/software/very_deep/caffe/VGG_ILSVRC_19_layers.caffemodel",
+                "artifact": "model",
+                "ex_from": "manual",
+                "ex_in_repo": false
+            },
+            {
+                "type": "link",
+                "location": "https://gist.githubusercontent.com/ksimonyan/3785162f95cd2d5fee77/raw/f02f8769e64494bcd3d7e97d5d747ac275825721/VGG_ILSVRC_19_layers_deploy.prototxt",
+                "artifact": "model",
+                "ex_from": "manual",
+                "ex_in_repo": false
+            },
+            {
+                "type": "link",
+                "location": "https://s3-us-west-2.amazonaws.com/dqa-data/shining3-folds.zip",
+                "artifact": "dataset",
+                "ex_from": "manual",
+                "ex_in_repo": false
+            }
+          ],
           "outs": [
               {
                   "type": "dir",
