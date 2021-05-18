@@ -1,0 +1,13 @@
+name: dqa-net
+channels:
+- default
+dependencies:
+- python=3.5.1
+- pip
+- pip:
+  - numpy
+  - progressbar2
+  - nltk
+  - tensorflow
+  - h5py
+  - tensorflow
