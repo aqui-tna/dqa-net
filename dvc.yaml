@@ -1,0 +1,95 @@
+stages:
+  step0_download-data-and-models:
+    cmd: "chmod +x download.sh \n ./download.sh"
+    deps:
+    - download.sh
+  step1_data-preprocessing:
+    cmd: python -m prepro.p05
+    params:
+    - data_dir
+    - target_dir
+    - glove_path
+    - min_count
+    - vgg_model_path
+    - vgg_proto_path
+    - debug
+    - qa2hypo
+    - qa2hypo_path
+    - prepro_images
+    deps:
+    - prepro/p05.py
+  step2_trainning:
+    cmd: python -m main.x05 --train
+    params:
+    - model_name
+    - data_dir
+    - fold_path
+    - batch_size
+    - init_mean
+    - init_std
+    - init_lr
+    - anneal_period
+    - anneal_ratio
+    - num_epochs
+    - opt
+    - val_num_batches
+    - train_num_batches
+    - test_num_batches
+    - device_type
+    - num_devices
+    - val_period
+    - save_period
+    - config
+    - config_ext
+    - hidden_size
+    - image_size
+    - rnn_num_layers
+    - emb_num_layers
+    - keep_prob
+    - sim_func
+    - lstm
+    - forget_bias
+    - cell_clip
+    - rand_y
+    - mode
+    - encoder
+    deps:
+    - main/x05.py
+  step3_testing:
+    cmd: python -m main.x05
+    params:
+    - model_name
+    - data_dir
+    - fold_path
+    - batch_size
+    - init_mean
+    - init_std
+    - init_lr
+    - anneal_period
+    - anneal_ratio
+    - num_epochs
+    - opt
+    - val_num_batches
+    - train_num_batches
+    - test_num_batches
+    - device_type
+    - num_devices
+    - val_period
+    - save_period
+    - config
+    - config_ext
+    - hidden_size
+    - image_size
+    - rnn_num_layers
+    - emb_num_layers
+    - keep_prob
+    - sim_func
+    - lstm
+    - forget_bias
+    - cell_clip
+    - rand_y
+    - mode
+    - encoder
+    deps:
+    - main/x05.py
+    - configs
